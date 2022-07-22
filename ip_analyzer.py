@@ -17,10 +17,6 @@ class IPanalyzer:
         if host == 'localhost':
             host = '127.0.0.1'
         self.host = str(host)
-        """
-        self.ports_range = str(ports_range)
-        self.type_scan = str(type_scan)
-        """
     
     #THIS FUNCTION ACTS LIKE A PORT SCANNER LIKE NMAP
     def ports_scanner(self):
