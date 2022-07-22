@@ -1,5 +1,3 @@
-#key = 73302adbc1da614245a355c3d6f83f5b
-
 #LIBRARIES
 import nmap
 import requests
@@ -56,27 +54,10 @@ class IPanalyzer:
 
     def geolocator(self):
         global response
-        key = '?key=73302adbc1da614245a355c3d6f83f5b'
+        key = '' #put your api key here!
         ipaddress_lokkup = url + 'ip-address-lookup.php' + key + '&input=' + str(self.host)
         r = requests.get(ipaddress_lokkup)
         response = r.text
-
-    def organizador(self, lista):
-        lista_split = re.split("\s", lista)
-        res = [] 
-        for string in lista_split:
-            if string != "":
-                res.append(string)
-        lista_split = []
-        for data in range(len(res)):
-            if ':' in res[data]:
-                res_split = res[data].split(':')
-                lista_split.append(res_split)
-        res = []
-        for i in lista_split:
-            for j in i:
-                res.append(j)
-        return res
 
     def show(self):
         if type_scan == 'port_scan':
