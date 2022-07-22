@@ -22,6 +22,7 @@ class IPanalyzer:
         self.type_scan = str(type_scan)
         """
     
+    #THIS FUNCTION ACTS LIKE A PORT SCANNER LIKE NMAP
     def ports_scanner(self):
         global port_info, host_info, allports
         scn = nmap.PortScanner()
@@ -52,6 +53,7 @@ class IPanalyzer:
             port_info = port_info + '|{:<12}|{:<12}|{:<14}|{:<31}|'.format(port, port_state, port_name, port_service) + '\n' + '#------------#------------#--------------#-------------------------------#' + '\n'
         host_info = str(self.host) + '  ' + '  State: ' + str(host_state) + '  ' + '  Name: ' + str(host_name)
 
+    #THIS FUNCTION WORK LIKE A IP GEOLOCATOR WITH THE API OF https://whatismyipaddress.com/
     def geolocator(self):
         global response
         key = '' #put your api key here!
@@ -59,9 +61,10 @@ class IPanalyzer:
         r = requests.get(ipaddress_lokkup)
         response = r.text
 
+    #THIS FUNCTION SHOW THE SCAN TYPE YOU HAVE CHOOSE
     def show(self):
         if type_scan == 'port_scan':
-            analyzer.ports_scanner()
+            self.ports_scanner()
             host_info_long = 72
             print('##########################################################################')
             print('|{:^{}}|'.format(host_info, host_info_long))
@@ -77,7 +80,7 @@ class IPanalyzer:
             print('Sintax: python ip_analyzer.py <ip> <scan_type>\n\nTipos de escaneo:\n\t-port_scan\n\t-geolocation')
 
 
-
+#START THE SCRIPT
 if __name__ == '__main__':
     try:
         if len(sys.argv) == 3:
